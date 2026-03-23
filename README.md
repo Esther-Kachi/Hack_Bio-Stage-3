@@ -1,5 +1,18 @@
 # Hack_Bio-Stage-3
 
+BIO-DATA-VISUALIZATION-R-STAGE-THREE
+Cell Type Snapshot Explorer (scRNA‑seq) AUTHOR: ESTHER AZUNNA A lightweight Shiny app for exploring UMAP embeddings, marker gene expression, and gene specificity scores across cell types.
+
+How to Run the App
+
+Install required packages:install.packages(c("shiny", "ggplot2", "dplyr", "readr"))
+Run directly from the project folder: shiny::runApp()
+Or, launch the deployed app via the shinyapps.io link: 
+
+Gene Specificity Score Each gene is ranked by a simple specificity score: diff = mean_in − mean_out Where: mean_in: average expression of the gene within the selected cell type mean_out: average expression outside that cell type A larger diff means the gene is more specific (highly expressed inside the group and low outside).
+
+Marker Gene Selection The app automatically identifies a marker gene for the selected cell type by: 1.Computing diff for every gene 2.Ranking genes by descending diff 3.Selecting the top gene (highest specificity score) as the marker This marker gene is then used to color the UMAP plot and summarize expression patterns.
+
 library(shiny)
 library(dplyr)
 library(ggplot2)
